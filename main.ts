@@ -28,7 +28,7 @@ function lichtspiele (lang: boolean) {
             basic.pause(500)
         }
     } else {
-        strip.showColor(neopixel.colors(farben[1]))
+        strip.showColor(neopixel.colors(farben[3]))
         basic.pause(1000)
         strip.clear()
         strip.show()
@@ -80,13 +80,13 @@ let kurve_links = 0
 let gang = 0
 let grenze = 0
 let rad_links_korrektur = 0
-let rad_links = 0
-let rad_rechts = 0
-let motor_links = 0
-let motor_rechts = 0
-let links_ist = 0
-let rechts_ist = 0
 let farben: number[] = []
+let rechts_ist = 0
+let links_ist = 0
+let motor_rechts = 0
+let motor_links = 0
+let rad_rechts = 0
+let rad_links = 0
 rad_links_korrektur = 1
 grenze = 255
 radio.setGroup(99)
