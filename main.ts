@@ -13,10 +13,11 @@ function berechne_rad_werte () {
 }
 function lichtspiele (lang: boolean,farbe:number) {
     farben = [
+        65280,
     16777215,
     16711680,
     16776960,
-    65280
+  
     ]
     strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
     if (lang) {
@@ -28,7 +29,7 @@ function lichtspiele (lang: boolean,farbe:number) {
             basic.pause(500)
         }
     } else {
-        strip.showColor(neopixel.colors(farben[2+farbe]))
+        strip.showColor(neopixel.colors(farben[farbe]))
         basic.pause(1000)
         strip.clear()
         strip.show()
