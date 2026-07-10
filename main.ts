@@ -11,7 +11,7 @@ function berechne_rad_werte () {
     links_soll = Math.round(gerade_links - kurve_rechts)
     rechts_soll = Math.round(gerade_rechts - kurve_links)
 }
-function lichtspiele (lang: boolean) {
+function lichtspiele (lang: boolean,farbe:number) {
     farben = [
     16777215,
     16711680,
@@ -28,7 +28,7 @@ function lichtspiele (lang: boolean) {
             basic.pause(500)
         }
     } else {
-        strip.showColor(neopixel.colors(farben[3]))
+        strip.showColor(neopixel.colors(farben[2+farbe]))
         basic.pause(1000)
         strip.clear()
         strip.show()
@@ -52,14 +52,14 @@ radio.onReceivedValue(function (info, wert) {
         kurve_get = wert
         kurve_rad = Math.round(Math.map(kurve_get, -45, 45, -255, 255))
     } else if (info == "get_dist") {
-        lichtspiele(true)
+        lichtspiele(true,0)
         radio.sendValue("distanz", sonar.ping(
         DigitalPin.P1,
         DigitalPin.P2,
         PingUnit.Centimeters
         ))
     } else if (info == "stopp") {
-        lichtspiele(false)
+        lichtspiele(false,wert)
         links_soll = 0
         rechts_soll = 0
         robotbit.MotorStopAll()
