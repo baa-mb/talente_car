@@ -3,7 +3,7 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
     basic.showNumber(gang)
 })
-function berechne_rad_werte() {
+function berechne_rad_werte () {
     kurve_links = kurve_rad * -1
     kurve_rechts = kurve_rad
     gerade_links = gerade_rad * rad_links_korrektur
@@ -11,12 +11,12 @@ function berechne_rad_werte() {
     links_soll = Math.round(gerade_links - kurve_rechts)
     rechts_soll = Math.round(gerade_rechts - kurve_links)
 }
-function lichtspiele(lang: boolean) {
+function lichtspiele (lang: boolean) {
     farben = [
-        16777215,
-        16711680,
-        16776960,
-        65280
+    16777215,
+    16711680,
+    16776960,
+    65280
     ]
     strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
     if (lang) {
@@ -35,12 +35,12 @@ function lichtspiele(lang: boolean) {
     }
 }
 // robotbit.Servo(robotbit.Servos.S1, 0)
-function init() {
+function init () {
     basic.showIcon(IconNames.Diamond)
     hebe_winkel = 70
     motor_rechts = robotbit.Motors.M1A
-    motor_links = robotbit.Motors.M2B
-    robotbit.MotorStopAll()
+motor_links = robotbit.Motors.M2B
+robotbit.MotorStopAll()
 }
 radio.onReceivedValue(function (info, wert) {
     // grenze = 205 + gang * 10
@@ -54,9 +54,9 @@ radio.onReceivedValue(function (info, wert) {
     } else if (info == "get_dist") {
         lichtspiele(true)
         radio.sendValue("distanz", sonar.ping(
-            DigitalPin.P1,
-            DigitalPin.P2,
-            PingUnit.Centimeters
+        DigitalPin.P1,
+        DigitalPin.P2,
+        PingUnit.Centimeters
         ))
     } else if (info == "stopp") {
         lichtspiele(false)
@@ -80,13 +80,13 @@ let kurve_links = 0
 let gang = 0
 let grenze = 0
 let rad_links_korrektur = 0
-let farben: number[] = []
-let rechts_ist = 0
-let links_ist = 0
-let motor_rechts = 0
-let motor_links = 0
-let rad_rechts = 0
 let rad_links = 0
+let rad_rechts = 0
+let motor_links = 0
+let motor_rechts = 0
+let links_ist = 0
+let rechts_ist = 0
+let farben: number[] = []
 rad_links_korrektur = 1
 grenze = 255
 radio.setGroup(99)
@@ -110,7 +110,7 @@ basic.forever(function () {
         robotbit.MotorStopAll()
     } else {
         robotbit.MotorRun(motor_links, links_ist)
-        robotbit.MotorRun(motor_rechts, rechts_ist)
+robotbit.MotorRun(motor_rechts, rechts_ist)
     }
     basic.pause(5)
 })
